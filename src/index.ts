@@ -3,7 +3,7 @@ let form = document.querySelector("#form") as HTMLFormElement;
 let toFrom = document.querySelector("#tofrom") as HTMLInputElement;
 let details = document.querySelector("#details") as HTMLInputElement;
 let amount = document.querySelector("#amount") as HTMLInputElement;
-
+let listContainer = document.querySelector(".item-list") as HTMLUListElement;
 interface Payment {
   type: string;
   toFrom: string;
@@ -23,6 +23,15 @@ form.addEventListener("submit", (e: Event) => {
     isAdmin: true
   };
   allPayments.push(newPayment);
+
+  allPayments.forEach((item) => {
+    allPayments = [];
+    let liElement = document.createElement("li");
+    liElement.innerHTML = `${item.type === "Admin" ? "Admin" : "User"} | ${
+      item.toFrom
+    } | ${item.details} | ${item.amount}$ `;
+    listContainer.append(liElement);
+  });
 
   toFrom.value = "";
   details.value = "";
