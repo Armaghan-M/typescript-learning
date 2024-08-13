@@ -1,1 +1,1 @@
-let type =document.querySelector("#type") as HTMLSelectElement
+let type = document.querySelector("#type") as HTMLSelectElement;
